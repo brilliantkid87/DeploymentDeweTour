@@ -93,7 +93,7 @@ function CardsTours(props) {
                                     backgroundColor: "white",
                                 }}
                             >
-                                {card.quota === 0 ? "Sold Out" : card.quota}
+                                {card.quota === 0 ? "Sold Out" : `${card.quota} Tickets`}
                             </p>
                         </Card>
                     ))}
