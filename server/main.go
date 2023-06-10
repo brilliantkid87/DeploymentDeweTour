@@ -15,8 +15,6 @@ import (
 func main() {
 	e := echo.New()
 
-	var port = os.Getenv("PORT")
-
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
 		AllowOrigins: []string{"*"},
 		AllowMethods: []string{echo.GET, echo.POST, echo.PATCH, echo.DELETE},
@@ -34,6 +32,8 @@ func main() {
 	routes.RouteInit(e.Group("/api/v1"))
 	e.Static("/uploads", "./uploads")
 
-	fmt.Println("Running on port 5000")
-	e.Logger.Fatal(e.Start("localhost:5000"))
+	var port = os.Getenv("PORT")
+
+	fmt.Println("server running localhost:" + port)
+	e.Logger.Fatal(e.Start(":" + port))
 }
