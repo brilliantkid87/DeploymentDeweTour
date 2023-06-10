@@ -1,0 +1,386 @@
+ email & password  ?
+    state
+    submit mengubah nilai state
+    conditioanal jika admin atau customer
+    conditioanal rendering 
+    jika admin => admin
+    jika customer => customer
+    jika tidak login => landing page
+
+    import React, { useEffect, useState } from "react";
+import Button from "react-bootstrap/Button";
+import Image from "react-bootstrap/Image";
+import Wallpaper from "./assets/image1.png";
+import Logo from "./assets/Icon.png";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
+import LoginComp from "./Login";
+import RegisterComp from "./Register";
+import ProfileDropdown from "./ProfileDropdown";
+
+function NavbarComponents() {
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showRegisterModal, setShowRegisterModal] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem("loggedIn");
+    if (isLoggedIn === "true") {
+      setLoggedIn(true);
+    }
+  }, []);
+
+  const handleCloseLoginModal = () => {
+    setShowLoginModal(false);
+  };
+
+  const handleShowLoginModal = () => {
+    setShowLoginModal(true);
+  };
+
+  const handleCloseRegisterModal = () => {
+    setShowRegisterModal(false);
+  };
+
+  const handleShowRegisterModal = () => {
+    setShowRegisterModal(true);
+  };
+
+  const handleLogin = () => {
+    // Check if email and password match your criteria for login
+    if (email === "example@example.com" && password === "password") {
+      setLoggedIn(true);
+      localStorage.setItem("loggedIn", true);
+    } else {
+      alert("Invalid email or password");
+    }
+  };
+
+  const handleLogout = () => {
+    setLoggedIn(false);
+    localStorage.setItem("loggedIn", false);
+  };
+
+  return (
+    <div style={{ position: "relative" }}>
+      {/* Rest of the JSX code */}
+
+      <div
+        style={{
+          position: "absolute",
+          top: "10px",
+          right: "100px",
+          zIndex: "1",
+        }}
+      >
+        {loggedIn ? (
+          <ProfileDropdown handleLogout={handleLogout} />
+        ) : (
+          <>
+            <Button
+              className="btn border me-2"
+              variant=""
+              onClick={handleShowLoginModal}
+            >
+              Login
+            </Button>
+            <Button
+              className="btn bg-warning"
+              variant="primary"
+              onClick={handleShowRegisterModal}
+            >
+              Register
+            </Button>
+          </>
+        )}
+      </div>
+
+      {/* Rest of the JSX code */}
+      
+      {/* Login and Register Modals */}
+      <LoginComp
+        showModal={showLoginModal}
+        handleCloseModal={handleCloseLoginModal}
+        handleLogin={handleLogin}
+        setEmail={setEmail}
+        setPassword={setPassword}
+      />
+      <RegisterComp
+        showModal={showRegisterModal}
+        handleCloseModal={handleCloseRegisterModal}
+        handleLogin={handleLogin}
+      />
+    </div>
+  );
+}
+
+export default NavbarComponents;
+
+import React, { useEffect, useState } from "react";
+import Button from "react-bootstrap/Button";
+import Image from "react-bootstrap/Image";
+import Wallpaper from "./assets/image1.png";
+import Logo from "./assets/Icon.png";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
+import LoginComp from "./Login";
+import RegisterComp from "./Register";
+import ProfileDropdown from "./ProfileDropdown";
+
+function NavbarComponents() {
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showRegisterModal, setShowRegisterModal] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem("loggedIn");
+    if (isLoggedIn === "true") {
+      setLoggedIn(true);
+    }
+  }, []);
+
+  const handleCloseLoginModal = () => {
+    setShowLoginModal(false);
+  };
+
+  const handleShowLoginModal = () => {
+    setShowLoginModal(true);
+  };
+
+  const handleCloseRegisterModal = () => {
+    setShowRegisterModal(false);
+  };
+
+  const handleShowRegisterModal = () => {
+    setShowRegisterModal(true);
+  };
+
+  const handleLogin = () => {
+    // Check if email and password match your criteria for login
+    if (email === "example@example.com" && password === "password") {
+      setLoggedIn(true);
+      localStorage.setItem("loggedIn", "true");
+    } else {
+      alert("Invalid email or password");
+    }
+  };
+
+  const handleLogout = () => {
+    setLoggedIn(false);
+    localStorage.setItem("loggedIn", "false");
+  };
+
+  return (
+    <div style={{ position: "relative" }}>
+      {/* Rest of the JSX code */}
+
+      <div
+        style={{
+          position: "absolute",
+          top: "10px",
+          right: "100px",
+          zIndex: "1",
+        }}
+      >
+        {loggedIn ? (
+          <ProfileDropdown handleLogout={handleLogout} />
+        ) : (
+          <>
+            <Button
+              className="btn border me-2"
+              variant=""
+              onClick={handleShowLoginModal}
+            >
+              Login
+            </Button>
+            <Button
+              className="btn bg-warning"
+              variant="primary"
+              onClick={handleShowRegisterModal}
+            >
+              Register
+            </Button>
+          </>
+        )}
+      </div>
+
+      {/* Rest of the JSX code */}
+      
+      {/* Login and Register Modals */}
+      <LoginComp
+        showModal={showLoginModal}
+        handleCloseModal={handleCloseLoginModal}
+        handleLogin={handleLogin}
+        setEmail={setEmail}
+        setPassword={setPassword}
+      />
+      <RegisterComp
+        showModal={showRegisterModal}
+        handleCloseModal={handleCloseRegisterModal}
+        handleLogin={handleLogin}
+      />
+    </div>
+  );
+}
+
+export default NavbarComponents;
+
+import React, { useState } from "react";
+import PaymentCard from "./payments.js";
+
+function CarouselImg() {
+  const [quantity, setQuantity] = useState(1);
+  const price = 12398000;
+
+  const handleIncrement = () => {
+    setQuantity(quantity + 1);
+  };
+
+  const handleDecrement = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
+
+  const handleBookNow = () => {
+    // Navigate to the payments page
+    // Pass quantity and price as props
+    window.location.href = /payments?quantity=${quantity}&price=${price};
+  };
+
+  return (
+    <div>
+      {/* Rest of the component */}
+      <div className="d-flex justify-content-end mt-2">
+        <Button onClick={handleBookNow}>Book Now</Button>
+      </div>
+    </div>
+  );
+}
+
+export default CarouselImg;
+
+import React from "react";
+import Logo from "../assets/Icon (2).png";
+import Image from "react-bootstrap/Image";
+import { Container } from "react-bootstrap";
+import PaymentProof from "../assets/paymentproof.png";
+import ProfileDropdown from "../ProfileDropdown";
+import { useEffect } from "react";
+
+function PaymentCard(props) {
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem("loggedIn");
+    if (isLoggedIn !== "true") {
+      window.location.href = "/"; 
+    }
+  }, []);
+
+  const { quantity, price } = props;
+
+  return (
+    <Container>
+      {/* Rest of the component */}
+    </Container>
+  );
+}
+
+export default PaymentCard;
+
+import React, { useState } from "react";
+import Image from "react-bootstrap/Image";
+import Carousel from "react-bootstrap/Carousel";
+import DetailTour1 from "../components/assets/DetailTour1.png";
+import DetailTour2 from "../components/assets/DetailTour2.png";
+import DetailTour3 from "../components/assets/DetailTour3.png";
+import Rectangle1 from "../components/assets/Rectangle 8 (1).png";
+import Rectangle2 from "../components/assets/Rectangle 8 (2).png";
+import Rectangle3 from "../components/assets/Rectangle 8 (3).png";
+import { Button, Container } from "react-bootstrap";
+import hotel from "../components/assets/hotel 1.png";
+import { FormGroup } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
+import Logo from "./assets/Icon.png";
+import Minus from "./assets/Minus.png";
+import Plus from "./assets/Plus.png";
+
+function CarouselImg() {
+  const [quantity, setQuantity] = useState(1);
+  const price = 12398000;
+
+  const handleIncrement = () => {
+    setQuantity(quantity + 1);
+  };
+
+  const handleDecrement = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
+
+  const handleBookNow = () => {
+    // Navigate to the payments page
+    // Pass quantity and price as query parameters
+    window.location.href = /payments?quantity=${quantity}&price=${price};
+  };
+
+  return (
+    <Container>
+      <div>
+        <h3 className="mt-5">6D/4N Fun Tassie Vacation + Sydney</h3>
+        <div className="">
+          <div>
+            <Image src={DetailTour1} style={{ width: "100%" }} />
+          </div>
+        </div>
+        {/* Rest of the component */}
+        <div className="d-flex justify-content-between mt-1">
+          <h5>Total :</h5>
+          <h5>
+            <span className="text-warning">IDR. {(price * quantity).toLocaleString()}</span>
+          </h5>
+        </div>
+        <div className="d-flex justify-content-end mt-2">
+          <Button onClick={handleBookNow}>Book Now</Button>
+        </div>
+      </div>
+    </Container>
+  );
+}
+
+export default CarouselImg;
+
+import React, { useEffect } from "react";
+import Logo from "../assets/Icon (2).png";
+import Image from "react-bootstrap/Image";
+import { Container } from "react-bootstrap";
+import PaymentProof from "../assets/paymentproof.png";
+import ProfileDropdown from "../ProfileDropdown";
+
+function PaymentCard(props) {
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem("loggedIn");
+    if (isLoggedIn !== "true") {
+      window.location.href = "/";
+    }
+  }, []);
+
+  const { quantity, price } = props;
+
+  return (
+    <Container>
+      <div className="shadow p-3 mt-5 mb-5 bg-body-tertiary rounded border">
+        {/* Rest of the component */}
+        <div className="d-flex justify-content-end mt-2">
+          <Button>Pay Now</Button>
+        </div>
+      </div>
+    </Container>
+  );
+}
+
+export default PaymentCard;
