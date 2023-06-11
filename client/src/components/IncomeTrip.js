@@ -86,17 +86,18 @@ function IncomeTrips() {
                 <p className="text-warning">IDR. {(card.price).toLocaleString()}</p>
                 <p>{card.country.name}</p>
               </div>
-              <p
+              <h6
                 style={{
                   position: "absolute",
                   top: "10%",
+                  padding: "5px",
                   right: "0",
                   borderRadius: "5px",
                   backgroundColor: "white",
                 }}
               >
-                {card.quota}
-              </p>
+                {card.quota === 0 ? "Sold Out" : `${card.quota} Tickets`}
+              </h6>
               <span className="d-flex justify-content-between">
 
                 <Button type="button" className="btn btn-primary btn-lg">Update</Button>

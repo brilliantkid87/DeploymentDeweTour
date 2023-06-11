@@ -3,7 +3,6 @@ import Home from './pages/Home';
 import AddTripAdmins from './components/Admin/AddTripAdmin';
 import ProfilePages from './pages/ProfilesPage';
 import DetailTourPage from './pages/DetailTourPage';
-// import './components/style/App.css';
 import WaitingPayment from './pages/PaymentPendingPage';
 import IncomeTrips from './components/IncomeTrip';
 import ListTransactionAdmins from './components/Admin/ListTransactionAdmin';

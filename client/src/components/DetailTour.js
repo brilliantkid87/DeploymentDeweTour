@@ -265,8 +265,8 @@ function CarouselImg() {
           {login?.role === "admin" ? (
             <Button disabled>Kamu bukan user</Button>
           ) : (
-            <Button disabled={trip?.quota === 0} onClick={(e) => handleBuy.mutate(e)}>
-              Book Now
+            <Button disabled={trip?.quota === 0 || !login} onClick={(e) => handleBuy.mutate(e)}>
+              {login ? "Book Now" : "Login to Book"}
             </Button>
           )}
         </div>

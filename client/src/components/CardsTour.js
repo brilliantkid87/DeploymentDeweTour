@@ -84,17 +84,18 @@ function CardsTours(props) {
                                 <p className="text-warning">IDR. {(card.price).toLocaleString()}</p>
                                 <p>{card.country.name}</p>
                             </div>
-                            <p
+                            <h6
                                 style={{
                                     position: "absolute",
                                     top: "10%",
+                                    padding: "5px",
                                     right: "0",
                                     borderRadius: "5px",
                                     backgroundColor: "white",
                                 }}
                             >
                                 {card.quota === 0 ? "Sold Out" : `${card.quota} Tickets`}
-                            </p>
+                            </h6>
                         </Card>
                     ))}
                 </div>
