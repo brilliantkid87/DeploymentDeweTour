@@ -9,6 +9,8 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { API } from "../config/api";
 import { queryCache, useMutation, useQuery } from "react-query";
 import FooterComponents from "./Footer";
+import Swal from 'sweetalert2';
+
 
 function IncomeTrips() {
   let navigate = useNavigate();
@@ -94,15 +96,29 @@ function IncomeTrips() {
                   right: "0",
                   borderRadius: "5px",
                   backgroundColor: "white",
+                  color: card.quota === 0 ? "red" : "black",
+                  fontWeight: card.quota === 0 ? "bold" : "none",
                 }}
               >
                 {card.quota === 0 ? "Sold Out" : `${card.quota} Tickets`}
               </h6>
               <span className="d-flex justify-content-between">
-
                 <Button type="button" className="btn btn-primary btn-lg">Update</Button>
-                <Button type="button" className="btn btn-danger btn-lg" onClick={() => handleDelete(card.id)}>Delete</Button>
+                <Button type="button" className="btn btn-danger btn-lg" onClick={() => {
+                  Swal.fire({
+                    title: 'Apakah kamu mau delete?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Delete',
+                    cancelButtonText: 'Cancel'
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                      handleDelete(card.id);
+                    }
+                  });
+                }}>Delete</Button>
               </span>
+
             </Card>
           ))}
         </div>

@@ -92,6 +92,8 @@ function CardsTours(props) {
                                     right: "0",
                                     borderRadius: "5px",
                                     backgroundColor: "white",
+                                    color: card.quota === 0 ? "red" : "black",
+                                    fontWeight: card.quota === 0 ? "bold" : "none",
                                 }}
                             >
                                 {card.quota === 0 ? "Sold Out" : `${card.quota} Tickets`}
