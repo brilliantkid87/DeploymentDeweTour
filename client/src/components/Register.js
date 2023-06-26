@@ -104,7 +104,7 @@ function RegisterComp(props) {
           />
         </FormGroup>
 
-        <Form.Group className="mb-3 p-2" controlId="formBasicPassword">
+        <Form.Group className="p-2" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control
             type="password"
@@ -115,7 +115,7 @@ function RegisterComp(props) {
           />
         </Form.Group>
 
-        <Form.Group className="mb-3 p-2" controlId="formBasicPassword">
+        <Form.Group className="p-2" controlId="formBasicPassword">
           <Form.Label>Phone</Form.Label>
           <Form.Control
             type="text"
@@ -138,7 +138,7 @@ function RegisterComp(props) {
         </Form.Group>
         <div className="d-flex justify-content-center">
 
-          <Button className="m-2 rounded" variant="primary" type="submit">
+          <Button className="m-2 rounded w-100 bg-success" type="submit">
             Register
           </Button>
         </div>

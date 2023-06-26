@@ -125,11 +125,12 @@ function LoginComp(props) {
             onChange={handleChange}
           />
         </Form.Group>
-        <div className="d-flex justify-content-center bg-success">
+        <div className="d-flex justify-content-center">
           <Button
-            className="m-2 rounded btn-success"
+            className="m-2 rounded btn-success w-100"
             variant="primary"
             type="submit"
+            
           >
             Login
           </Button>
