@@ -52,7 +52,7 @@ func (h *handlerAuth) Register(c echo.Context) error {
 		Name:     request.Name,
 		Email:    request.Email,
 		Password: password,
-		Role:     "",
+		Role:     "customer",
 		Phone:    request.Phone,
 		Address:  request.Address,
 	}
